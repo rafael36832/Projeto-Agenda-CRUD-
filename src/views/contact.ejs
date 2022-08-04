@@ -1,0 +1,49 @@
+<%- include("./includes/header") %>
+<%- include("./includes/navbar") %>
+
+<div class="container">
+  <div class="row mx-auto">
+
+    <div class="col-lg-2">  </div>
+
+    <div class="col-lg-8"> 
+
+      <h2 class="text-center my-5"> CONTATOS </h1>
+
+      <%- include("includes/messages") %>
+      
+      <% if(!contact.id) { %>
+      <form class="px-2 contactForm" id="contactForm" method="POST" action="/contact/register">
+      <% } else { %> 
+      <form class="px-2 contactForm" id="contactForm" method="POST" action="/contact/update/<%=contact.id%>">
+      <% } %>
+
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div class="mb-3 mx-5">
+          <label for="nameContact" class="form-label">Nome</label>
+          <input type="text" value="<%= contact.name %>" class="form-control" id="nameContact" name="nameContact" aria-describedby="nameContactMessage" required>
+          <div id="nameContactMessage" class="form-text errorMessage"> </div>
+        </div>
+        <div class="mb-3 mx-5">
+          <label for="v" class="form-label">Email</label>
+          <input type="email" value="<%= contact.email %>" class="form-control" id="emailContact" name="emailContact" aria-describedby="emailContactMessage">
+          <div id="emailContactMessage" class="form-text errorMessage"> </div>
+        </div>
+        <div class="mb-3 mx-5">
+          <label for="telephoneContact" class="form-label">Telefone</label>
+          <input type="text" value="<%= contact.telephone %>" class="form-control" id="telephoneContact" name="telephoneContact" aria-describedby="telephoneContactMessage">
+          <div id="telephoneContactMessage" class="form-text errorMessage"> </div>
+        </div>
+        <button type="submit" class="btn btn-primary mx-5 mb-5"> Salvar </button>
+      </form>
+    </div>
+
+    <div class="col-lg-2">  </div>
+  </div>
+</div>
+
+
+
+
+<%- include("./includes/footer") %>

@@ -1,0 +1,78 @@
+<%- include("./includes/header") %>
+<%- include("./includes/navbar") %>
+
+<div class="col-lg-2">  </div>
+
+<div class="col-lg-12 pt-3"> 
+    <h1 class="text-center"> Login </h1>
+    <p class="text-center lead pb-3"> Faça login ou cadastre-se </p>
+</div>
+
+<%- include("includes/messages") %>
+
+<div class="row mx-auto">
+
+    <div class="col-lg-6">
+        <h4 class="text-center"> Login </h4>
+        <form class="px-2 loginUserForm" method="POST" action="/login/login">
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="mb-3 mx-5">
+              <label for="emailLogin" class="form-label">Email</label>
+              <input type="email" class="form-control" id="emailLogin" name="emailLogin" aria-describedby="emailLoginMessage" required >
+              <div id="emailLoginMessage" class="form-text errorMessage"> </div>
+            </div>
+            <div class="mb-3 mx-5">
+              <label for="passwordLogin" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" required aria-describedby="passwordLoginMessage">
+              <div id="passwordLoginMessage" class="form-text errorMessage"> </div>
+            </div>
+            <div class="mb-3 mx-5 form-check">
+              <input type="checkbox" class="form-check-input" name="stayLoggedLogin" id="stayLoggedLogin">
+              <label class="form-check-label" for="stayLoggedLogin">Continuar logado</label>
+            </div>
+            <button type="submit" class="btn btn-primary mx-5">Entrar</button>
+        
+        </form>
+    </div>
+
+    <div class="col-lg-6">
+        <h4 class="text-center"> Cadastro </h4>
+
+        <form class="px-2 registerUserForm" method="POST" action="/login/register">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="mb-3 mx-5">
+              <label for="nameRegister" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nameRegister" name="nameRegister" aria-describedby="nameRegisterMessage" required>
+              <div id="nameRegisterMessage" class="form-text errorMessage"> </div>
+          </div>
+            <div class="mb-3 mx-5">
+              <label for="emailRegister" class="form-label">Email</label>
+              <input type="email" class="form-control" id="emailRegister" name="emailRegister" aria-describedby="emailRegisterMessage" required>
+              <div id="emailRegisterMessage" class="form-text errorMessage"> </div>
+            </div>
+            <div class="mb-3 mx-5">
+              <label for="passwordRegister1" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="passwordRegister1" name="passwordRegister1" aria-describedby="passwordRegisterMessage1" required>
+              <div id="passwordRegisterMessage1" class="form-text errorMessage"> </div>
+            </div>
+            <div class="mb-3 mx-5">
+              <label for="passwordRegister2" class="form-label">Confirme sua senha</label>
+              <input type="password" class="form-control" id="passwordRegister2" name="passwordRegister2" aria-describedby="passwordRegisterMessage2" required>
+              <div id="passwordRegisterMessage2" class="form-text errorMessage"> </div>
+            </div>
+            <div class="mb-3 mx-5">
+              <label for="telephoneRegister" class="form-label">Telefone</label>
+              <input type="text" class="form-control" id="telephoneRegister" name="telephoneRegister" aria-describedby="telephoneRegisterMessage" required>
+              <div id="telephoneRegisterMessage" class="form-text errorMessage"> </div>
+            </div>
+            <div class="mb-3 mx-5 form-check">
+              <input type="checkbox" class="form-check-input" id="useTermsCheck" required>
+              <label class="form-check-label" for="useTermsCheck">Declaro que li e aceito os <a href="/login/useTerms" target="_blank"><span id="useTerms"> termos de uso </span></a></label>
+            </div>
+            <button type="submit" class="btn btn-primary mx-5 mb-5">Criar conta</button>
+        </form>
+
+    </div>
+</div>
+<%- include("./includes/footer") %>

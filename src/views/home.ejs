@@ -1,0 +1,38 @@
+<%- include("./includes/header") %>
+<%- include("./includes/navbar") %>
+
+<div class="container" id="container">
+
+    <div class="col-lg-2">  </div>
+
+    <div class="col-lg-12 pt-3"> 
+      <h1 class="text-center"> Agenda </h1>
+      <p class="text-center lead"> Todos os contatos </p>
+    </div>
+
+    <%- include("includes/messages") %>
+
+    <div class="reponsive-table">
+      <table class="table">
+        <tbody id="mainTableBody">
+
+          <% contacts.forEach( contact => { %>
+
+          <tr>
+            <td> <%=contact.name %> </td>
+            <td> <%=contact.email %> </td>
+            <td> <%=contact.telephone %> </td>
+            <td> <a href="/contact/index/<%= contact.id %>"> Editar </td>
+            <td> <a class="text-danger" href="/contact/delete/<%= contact.id %>"> Excluir </td>
+          </tr>
+
+          <% }) %>
+        
+        </tbody>
+      </table>
+    
+    </div>
+    <div class="col-lg-2"> </div>
+
+</div>
+<%- include("./includes/footer") %>
