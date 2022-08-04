@@ -84,7 +84,7 @@ module.exports.useTerms = (req, res) => {
 
 module.exports.logout = (req, res) => {
 
-    req.session = destroy();
+    req.session = req.session.destroy();
     res.redirect('/login/index');
 
 }
